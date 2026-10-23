@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Men’s style — барбершоп в Ижевске</title>
+
+  <style>
+    /* ========== Цвета ========== */
+    :root {
+      --bg: #f2f1ee;
+      --surface: #e6e4df;
+      --text: #1c1d20;
+      --muted: #666a72;
+      --accent: #b8741a;
+      --line: #cfccc4;
+
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #131416;
+        --surface: #1c1e21;
+        --text: #eceae4;
+        --muted: #9a9ca3;
+        --accent: #e0a040;
+        --line: #2b2d31;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #131416;
+      --surface: #1c1e21;
+      --text: #eceae4;
+      --muted: #9a9ca3;
+      --accent: #e0a040;
+      --line: #2b2d31;
+    }
+
+    /* ========== Базовые стили ========== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Bebas Neue", "Oswald", "Arial Narrow", Impact, sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ========== Шапка ========== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .logo {
+      font-family: "Bebas Neue", "Oswald", "Arial Narrow", Impact, sans-serif;
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      font-size: 14px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    /* ========== Первый экран ========== */
+    .hero {
+      display: grid;
+      gap: 26px;
+      padding: 80px 0 76px;
+    }
+
+    .tag {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .hero h1 {
+      font-size: clamp(54px, 14vw, 132px);
+      max-width: 9ch;
+    }
+
+    .hero p {
+      max-width: 46ch;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    /* ========== Кнопки ========== */
+    .btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 28px;
+      background: var(--accent);
+      color: #131416;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 2px solid var(--accent);
+    }
+
+    .btn.ghost {
+      background: none;
+      color: var(--text);
+      border-color: var(--line);
+    }
+
+    .btn:hover {
+      filter: brightness(1.1);
+    }
+
+    /* ========== Секции ========== */
+    section {
+      padding: 70px 0;
+    }
+
+    h2 {
+      font-size: clamp(36px, 7vw, 58px);
+      margin-bottom: 32px;
+    }
+
+    /* Услуги */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      padding: 30px;
+      border-top: 3px solid var(--accent);
+    }
+
+    .card h3 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* Преимущества */
+    .points {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .points li {
+      border-left: 2px solid var(--accent);
+      padding-left: 18px;
+    }
+
+    .points strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 2px;
+    }
+
+    .points span {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* Контакты */
+    .contact {
+      background: var(--surface);
+    }
+
+    .contact .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+    }
+
+    .contact small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .contact .big {
+      font-family: "Bebas Neue", "Oswald", "Arial Narrow", Impact, sans-serif;
+      font-size: 30px;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+    }
+
+    .contact a.big:hover {
+      color: var(--accent);
+    }
+
+    /* ========== Подвал ========== */
+    footer {
+      padding: 26px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 560px) {
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 52px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== Шапка и первый экран ========== -->
+  <div class="wrap">
+    <header>
+      <a class="logo" href="#top">Men’s <span>style</span></a>
+      <nav>
+        <a href="#uslugi">Услуги</a>
+        <a href="#pochemu">О нас</a>
+        <a href="#kontakty">Контакты</a>
+      </nav>
+    </header>
+
+    <div class="hero" id="top">
+      <div class="tag">Барбершоп · Ижевск</div>
+      <h1>Территория мужского стиля</h1>
+      <p>
+        Добро пожаловать! Мы профессионально делаем стрижки
+        и создаём идеальные укладки.
+      </p>
+      <div class="btns">
+        <a class="btn" href="tel:+79226900200">Позвонить и записаться</a>
+        <a class="btn ghost" href="https://vk.ru/studia_strizhek" target="_blank" rel="noopener">Мы ВКонтакте</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Услуги ========== -->
+  <section id="uslugi" style="background: var(--surface)">
+    <div class="wrap">
+      <h2>Что мы делаем</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Мужские стрижки</h3>
+          <p>Стрижки любой сложности: от классики до современных форм.</p>
+        </div>
+
+        <div class="card">
+          <h3>Модные укладки</h3>
+          <p>Укладки на каждый день, чтобы вы выглядели свежо и уверенно.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Почему мы ========== -->
+  <section id="pochemu">
+    <div class="wrap">
+      <h2>Почему Men’s style</h2>
+
+      <ul class="points">
+        <li>
+          <strong>Профессионально</strong>
+          <span>Работаем аккуратно и подбираем форму под вас.</span>
+        </li>
+        <li>
+          <strong>Любая сложность</strong>
+          <span>Справимся и с простой стрижкой, и со сложной формой.</span>
+        </li>
+        <li>
+          <strong>Идеальная укладка</strong>
+          <span>Образ, который легко повторить каждое утро.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ========== Контакты ========== -->
+  <section class="contact" id="kontakty">
+    <div class="wrap">
+      <h2>Контакты</h2>
+
+      <div class="grid">
+        <div>
+          <small>Телефон</small>
+          <a class="big" href="tel:+79226900200">+7 (922) 690-02-00</a>
+        </div>
+
+        <div>
+          <small>Адрес</small>
+          <span class="big">Ижевск, Красногеройская 65</span>
+        </div>
+
+        <div>
+          <small>ВКонтакте</small>
+          <a class="big" href="https://vk.ru/studia_strizhek" target="_blank" rel="noopener">Наше сообщество</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Подвал ========== -->
+  <footer>
+    <div class="wrap">© Men’s style · Демо-версия сайта</div>
+  </footer>
+
+</body>
+</html>
